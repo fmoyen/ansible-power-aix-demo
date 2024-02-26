@@ -1,0 +1,16 @@
+---
+- name: "INSTALLP update on AIX"
+  hosts: "{{host_name}}"
+  gather_facts: no
+  vars:
+    #host_name: all
+    #device_name: /dev/rmt0.1
+  collections:
+    - ibm.power_aix
+  tasks:
+    - name: Update software package
+      installp:
+        action: apply
+        device: "{{device_value}}"
+        install_list: "{{install_list_value}}"
+        updates_only: True

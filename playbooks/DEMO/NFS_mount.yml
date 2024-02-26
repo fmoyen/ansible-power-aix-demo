@@ -1,0 +1,19 @@
+---
+- name: "MOUNT on AIX"
+  hosts: "{{host_name}}"
+  gather_facts: no
+  vars:
+    # host_name: all
+    # mount_dir_value: /mnt/testfs
+    # mount_over_dir_value: /mnt/clientnfs
+    # node_v: ansible-test1
+  collections:
+    ibm.power_aix
+
+  tasks:
+    - name: Mount filesystems provided by a node
+      mount:
+        state: mount
+        node: "{{node_v}}"
+        mount_dir: "{{mount_dir_value}}"
+        mount_over_dir: "{{mount_over_dir_value}}"

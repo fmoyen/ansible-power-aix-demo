@@ -1,0 +1,20 @@
+---
+- name: "AIX package installation"
+  hosts: "{{host_name}}"
+  gather_facts: no
+  vars:
+    # host_name: all
+    # device_value: /mnt
+    # install_list_value: all # Examples: update_all, zlibNX
+    force_value: False
+    agree_licenses_value: True
+    # installp_flags_value: 
+  collections:
+    ibm.power_aix
+
+  tasks:
+    - name: Installation of an AIX package
+      geninstall:
+        action: install
+        device: "{{device_value}}"
+        install_list: "{{install_list_value}}"

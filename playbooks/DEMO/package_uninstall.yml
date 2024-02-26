@@ -1,0 +1,17 @@
+---
+- name: "AIX package Removal"
+  hosts: "{{host_name}}"
+  gather_facts: no
+  vars:
+    # host_name: all
+    # install_list_value: zlibNX.rte
+    force_value: False
+    # installp_flags_value: 
+  collections:
+    ibm.power_aix
+
+  tasks:
+    - name: Uninstallation of an AIX package
+      geninstall:
+        action: uninstall
+        install_list: "{{install_list_value}}"

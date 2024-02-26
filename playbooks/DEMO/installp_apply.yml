@@ -1,0 +1,18 @@
+---
+- name: "INSTALLP apply on AIX"
+  hosts: "{{host_name}}"
+  gather_facts: no
+  vars:
+    #host_name: all
+    #device_name: /dev/rmt0.1
+  collections:
+    - ibm.power_aix
+  tasks:
+    - name: Install (apply) software package and expand file systems if necessary
+      installp:
+        action: apply
+        extend_fs: yes
+        device: "{{device_value}}"
+        install_list: "{{install_list_value}}"
+        agree_licenses: "{{agree_licenses_bool}}"
+        # updates_only: "{{updates_only_value}}"

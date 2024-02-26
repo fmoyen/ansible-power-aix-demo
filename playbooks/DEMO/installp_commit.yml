@@ -1,0 +1,14 @@
+---
+- name: "INSTALLP commit on AIX"
+  hosts: "{{host_name}}"
+  gather_facts: no
+  vars:
+    #host_name: all
+  collections:
+    - ibm.power_aix
+  tasks:
+    - name: Commit software package
+      installp:
+        action: commit
+        extend_fs: yes
+        install_list: "{{install_list_value}}"
